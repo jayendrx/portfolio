@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="src/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jay</title>
+  </head>
+  
+  <body>
+    <div id="loadingScreen">
+      <div class="terminal">  
+        <pre id="bootText">
+          <span class="blinkingcursor"></span>
+        </pre>
+      </div>
+    </div>
+
+    <main>
+      <div id="home">
+        <pre id="homeText">
+
+        </pre>
+      </div>
+      <div class="section" id="about">
+        <h1>
+          about
+        </h1>
+      </div>
+      <div class="section" id="projects">
+        <h1>
+          Projects
+        </h1>
+      </div>
+      <div class="section" id="skills">
+        <h1>
+          Skills
+        </h1>
+      </div>
+      <div class="section" id="achievements">
+        <h1>
+          Achievements
+        </h1>
+      </div>
+      <div class="section" id="experiences">
+        <h1>
+          Experiences
+        </h1>
+      </div>
+      <div class="section" id="vibes">
+        <h1>
+          My Vibes
+        </h1>
+      </div>
+      <div class="section" id="contact">
+        <h1>
+          Contact me!
+        </h1>
+      </div>
+    </main>
+
+    <canvas id="canvas"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script>
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>

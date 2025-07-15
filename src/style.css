@@ -1,0 +1,156 @@
+html body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overflow-x: hidden;
+}
+
+html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+        display: none;
+    }
+
+#canvas{
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden !important;
+    z-index: 0;
+}
+
+#loadingScreen {
+    position: fixed;
+    inset: 0;
+    background-color: black;
+    color: #00ff00;
+    font-family: 'Press Start 2P', monospace;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.terminal{
+    max-width: 90%;
+    white-space: pre-wrap;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.blinkingcursor {
+    display: inline-block;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+main{
+    position: relative;
+    z-index: 1;
+}
+
+.section{
+    margin-top: 0;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    color: black;
+    background-color: rgba(0,0,0,0.3);
+    backdrop-filter: blur(1px);
+    z-index: 1;
+    opacity: 0;
+}
+
+.section p{
+    margin-top: 0;
+    margin-bottom: 0;
+    display: flex;
+    padding: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+h1{
+    font-size: 1.5rem;
+    padding: 2rem;
+    text-align: center;
+    font-family: 'Press Start 2P', system-ui;
+}
+
+#home{
+    display: flex;
+    position: relative;
+    color: black;
+    background-color: rgba(0,0,0,0.3);
+    backdrop-filter: blur(1px);
+    z-index: 1;
+    height: 100vh;
+    width: 100vw;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+#home pre{
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 90vw;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Press Start 2P', system-ui;
+    font-size: 1.5rem;
+}
+
+#about{
+    margin: 30px;
+    height: 100vh;
+    width: 40vw;
+    border-radius: 5%;
+    margin-left: 58vw;
+}
+
+
+#projects{
+    margin: 20px;
+    width: 50vw;
+    border-radius: 25px;
+}
+
+#skills{
+    margin: 20px;
+    width: 45vw;
+    border-radius: 25px;
+    margin-left: 54vw;
+}
+
+#achievements{
+    margin: 20px;
+    width: 40vw;
+    border-radius: 25px;
+}
+
+#vibes{
+    margin: 20px;
+    width: 47vw;
+    border-radius: 25px;
+}
+
+#experiences{
+    margin: 20px;
+    width: 45vw;
+    border-radius: 25px;
+    margin-left: 54vw;
+}
+#contact{
+    margin: 20px;
+    width: 45vw;
+    border-radius: 25px;
+    margin-left: 50vw;
+}
