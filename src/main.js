@@ -262,7 +262,7 @@ positionAndRotation.forEach(({ id, iPosi, fPosi, iRot, fRot }) => {
 const loader = new GLTFLoader();
 
 const video = document.createElement("video");
-video.src = "/sunset.mp4";
+video.src = "/sunset2.mp4";
 video.loop = true;
 video.muted = true; // Mute the video to allow autoplay
 video.playsInline = true; // For iOS compatibility
