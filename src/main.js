@@ -500,6 +500,7 @@ window.addEventListener("mousemove", (e) => {
   pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
   pointer.y = -(e.clientY / window.innerHeight) * 2 + 1;
 });
+   
 
 //Animation loop
 function animate() {
