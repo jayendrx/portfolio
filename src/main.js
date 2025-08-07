@@ -2,13 +2,14 @@ import * as THREE from "three";
 import gsap from "gsap";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { RenderPass } from "three/examples/jsm/Addons.js";
-import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
-import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
 const canvas = document.getElementById("canvas");
 const clock = new THREE.Clock();
+const raycaster = new THREE.Raycaster();
+const pointer = new THREE.Vector2();
+const raycasterObjects = [];
+const updatableMaterials = [];
 
 let room;
 let mixer;
@@ -22,10 +23,6 @@ window.onbeforeunload = function () {
 const scene = new THREE.Scene();
 
 //camera
-
-// const aspectRatio= window.innerWidth/window.innerHeight
-// const camera = new THREE.OrthographicCamera(-1*window.innerWidth,1*window.innerWidth,1*window.innerHeight,-1*window.innerHeight,0.1,20);
-
 const camera = new THREE.PerspectiveCamera(
   40,
   window.innerWidth / window.innerHeight,
@@ -39,9 +36,6 @@ camera.rotation.set(
   0.06509972494815654
 );
 
-//axis helper
-// const axesHelper = new THREE.AxesHelper(5);
-// scene.add(axesHelper);
 
 //loading screen and transition to home screen
 const bootLines = [
@@ -60,14 +54,16 @@ const homeLines = [
   "Welcome to my portfolio!",
   "Explore my projects, skills, and experiences.",
   "Scroll down to continue.",
+  "Hello! I am Jayendra",
 ];
 let currentLineHome = 0;
 const homeText = document.getElementById("homeText");
-const home = document.getElementById("home");
+const home = document.getElementById("welcome");
 
 let currentLineBoot = 0;
 const bootText = document.getElementById("bootText");
 const loadingScreen = document.getElementById("loadingScreen");
+
 
 function typelinehome() {
   if (currentLineHome < homeLines.length) {
@@ -83,8 +79,15 @@ function typelinehome() {
   } else {
     gsap.to(home, {
       duration: 1,
-      autoAlpha: 0,
+      height: 90,
       ease: "power1.inOut",
+      // onComplete: () => {
+      //   gsap.to(button, {
+      //     duration: 1,
+      //     marginLeft: 1050,
+      //     ease: "power1.inOut",
+      //   });
+      // },
     });
   }
 }
@@ -98,7 +101,7 @@ function typeLine() {
 
     // Animate this line's text with GSAP TextPlugin
     gsap.to(lineEl, {
-      duration: 0.5,
+      duration: 1,
       text: bootLines[currentLineBoot],
       ease: "none",
       onComplete: () => {
@@ -164,13 +167,13 @@ const positionAndRotation = [
   {
     id: "skills",
     iPosi: { x: -0.5, y: 0.7, z: 3 },
-    fPosi: { x: -4.7, y: 3, z: 0.7 },
+    fPosi: { x: -3.7, y: 3, z: 2.4 },
     iRot: { x: 0, y: -0.3, z: 0 },
     fRot: { x: -Math.PI / 2, y: 0, z: 0 },
   },
   {
     id: "achievements",
-    iPosi: { x: -4.7, y: 3, z: 0.7 },
+    iPosi: { x: -3.7, y: 3, z: 2.4 },
     fPosi: { x: 0.3, y: 1.3, z: 1.8 },
     iRot: { x: -Math.PI / 2, y: 0, z: 0 },
     fRot: { x: 0, y: 0, z: 0 },
@@ -197,7 +200,6 @@ const positionAndRotation = [
     fRot: { x: -0.01871, y: -0.097683, z: 0 },
   },
 ];
-
 
 positionAndRotation.forEach(({ id, iPosi, fPosi, iRot, fRot }) => {
   gsap.fromTo(
@@ -242,7 +244,7 @@ positionAndRotation.forEach(({ id, iPosi, fPosi, iRot, fRot }) => {
     }
   );
 
-  let tempid =  document.getElementById(`${id}`);
+  let tempid = document.getElementById(`${id}`);
 
   gsap.to(tempid, {
     duration: 1,
@@ -257,12 +259,12 @@ positionAndRotation.forEach(({ id, iPosi, fPosi, iRot, fRot }) => {
   });
 });
 
-
 //Model
 const loader = new GLTFLoader();
 
 const video = document.createElement("video");
-video.src = "/sunset2.mp4";
+video.src = "/day.mp4";
+video.flipX = true;
 video.loop = true;
 video.muted = true; // Mute the video to allow autoplay
 video.playsInline = true; // For iOS compatibility
@@ -274,67 +276,182 @@ videoTexture.rotation = Math.PI / 2; // Rotate the video texture to match the mo
 videoTexture.center.set(0.5, 0.5); // Center the texture
 videoTexture.colorSpace = THREE.SRGBColorSpace; // Ensure the video texture uses the correct color space
 
-loader.load("/portfoliov18.glb", function (gltf) {
+const video2 = document.createElement("video");
+video2.src = "/night.mp4";
+video2.flipX = true;
+video2.loop = true;
+video2.muted = true; // Mute the video to allow autoplay
+video2.playsInline = true; // For iOS compatibility
+video2.autoplay = true; // Autoplay the video
+video2.play();
+
+const videoTexture2 = new THREE.VideoTexture(video2);
+videoTexture2.rotation = Math.PI / 2; // Rotate the video texture to match the model's orientation
+videoTexture2.center.set(0.5, 0.5); // Center the texture
+videoTexture2.colorSpace = THREE.SRGBColorSpace; // Ensure the video texture uses the correct color space
+
+const textureMap = {
+  first: {
+    day: "/Textures/Day/DayAtlasSet1rebake.webp",
+    night: "/Textures/Night/NightAtlasSet1rebake.webp",
+  },
+
+  second: {
+    day: "/Textures/Day/DayAtlasSet2.webp",
+    night: "/Textures/Night/NightAtlasSet2.webp",
+  },
+
+  third: {
+    day: "/Textures/Day/DayAtlasSet3edited2.webp",
+    night: "/Textures/Night/NightAtlasSet3edited2.webp",
+  },
+};
+
+const loadedTextures = {
+  day: {},
+  night: {},
+};
+
+const textureLoader = new THREE.TextureLoader();
+
+Object.entries(textureMap).forEach(([key, paths]) => {
+  const dayTexture = textureLoader.load(paths.day);
+  dayTexture.colorSpace = THREE.SRGBColorSpace;
+  dayTexture.flipY = false;
+  loadedTextures.day[key] = dayTexture;
+
+  const nightTexture = textureLoader.load(paths.night);
+  nightTexture.colorSpace = THREE.SRGBColorSpace;
+  nightTexture.flipY = false;
+  loadedTextures.night[key] = nightTexture;
+});
+
+
+
+loader.load("/portfolioWithoutMaterialsV14.glb", function (gltf) {
   room = gltf.scene;
 
   room.traverse((node) => {
     if (node.isMesh) {
-      node.castShadow = true;
-      node.receiveShadow = true;
+      const textureKey = Object.keys(textureMap).find((key) => node.name.includes(key));
 
-      console.log(node.name, node.material.type);
+      // Only proceed if a texture key was found for this mesh
+      if (textureKey) {
+        const material = new THREE.ShaderMaterial({
+          uniforms: {
+            uDayTexture: { value: loadedTextures.day[textureKey] },
+            uNightTexture: { value: loadedTextures.night[textureKey] },
+            uMixRatio: { value: 0.0 }, // Start in day mode
+          },
+          vertexShader: `
+            varying vec2 vUv;
+            varying vec3 vNormal;
+
+            // FIX 2: Restructured the shader to match modern Three.js standards.
+            // This ensures all skinning variables are declared and calculated correctly.
+            #include <common>
+            #include <uv_pars_vertex>
+            #include <displacementmap_pars_vertex>
+            #include <morphtarget_pars_vertex>
+            #include <skinning_pars_vertex>
+            #include <logdepthbuf_pars_vertex>
+            #include <clipping_planes_pars_vertex>
+
+            void main() {
+              #include <uv_vertex>
+              #include <beginnormal_vertex>
+              #include <morphnormal_vertex>
+              #include <skinbase_vertex>
+              #include <skinnormal_vertex>
+              #include <defaultnormal_vertex>
+              vNormal = normalize( transformedNormal );
+
+              #include <begin_vertex>
+              #include <morphtarget_vertex>
+              #include <skinning_vertex>
+              #include <displacementmap_vertex>
+              #include <project_vertex>
+              #include <logdepthbuf_vertex>
+              #include <clipping_planes_vertex>
+
+              vUv = uv;
+            }
+          `,
+          fragmentShader: `
+            uniform sampler2D uDayTexture;
+            uniform sampler2D uNightTexture;
+            uniform float uMixRatio;
+            varying vec2 vUv;
+            varying vec3 vNormal;
+            void main() {
+              vec4 dayColor = texture2D(uDayTexture, vUv);
+              vec4 nightColor = texture2D(uNightTexture, vUv);
+              vec4 finalColor = mix(dayColor, nightColor, uMixRatio);
+              finalColor.rgb = pow(finalColor.rgb, vec3(1.0/2.2));
+              gl_FragColor = finalColor;
+            }
+          `,
+        });
+        node.material = material;
+
+        updatableMaterials.push(material);
+
+      }
+
+      if (node.name.includes("raycaster")) {
+        raycasterObjects.push(node);
+      }
 
       if (node.name === "window") {
-        {
-          node.material = new THREE.MeshBasicMaterial({ map: videoTexture });
-          node.material.needsUpdate = true;
-        }
+        node.material = new THREE.MeshBasicMaterial({ map: videoTexture });
       }
-      else if (node.material && node.material.type === 'MeshBasicMaterial') {
-      // Replace flat unlit material with a lit one
-      node.material = new THREE.MeshStandardMaterial({
-        map: node.material.map,
-        color: node.material.color,
-        roughness: 0.8,
-        metalness: 0.2
-      });
-    }
-
     }
   });
+
   if (gltf.animations && gltf.animations.length > 0) {
     mixer = new THREE.AnimationMixer(room);
-    const action = mixer.clipAction(gltf.animations[0]);
-    action.play();
+    // Play all animations found in the file
+    gltf.animations.forEach((clip) => {
+        mixer.clipAction(clip).play();
+    });
   }
 
   scene.add(room);
   window.room = room;
+  let isNightMode = true;
+  const toggleButton = document.getElementById("modeToggle");
+  const switchimg =  document.getElementById("switch");
+  
+  if (toggleButton) {
+    toggleButton.addEventListener("click", () => {
+      isNightMode = !isNightMode;
+      console.log(`Switching to ${isNightMode ? "Night" : "Day"} mode. Updating ${updatableMaterials.length} materials.`);
+  
+      updatableMaterials.forEach((material) => {
+        gsap.to(material.uniforms.uMixRatio, {
+          value: isNightMode ? 0.0 : 1.0,
+          duration: 1.5,
+          ease: "power1.inOut",
+        });
+      });
+  
+      gsap.to(switchimg, {
+        rotate: isNightMode ? 0 : 90,
+        duration: 1.5,
+        ease: "power1.inOut"
+      })
+    });
+  
+    room.traverse((node) => {
+      if(node.name === "window"){
+        node.material = new THREE.MeshBasicMaterial({
+          map: isNightMode ? videoTexture2 : videoTexture
+        })
+      }
+    })
+  }
 });
 
-//lights
-const ambientLight = new THREE.AmbientLight(0xffb385, 0.5);
-scene.add(ambientLight);
-
-const sunlight = new THREE.DirectionalLight(0xff9240, 2);
-sunlight.position.set(20, 15, 15);
-sunlight.castShadow = true;
-sunlight.shadow.radius = 4;
-sunlight.shadow.bias = -0.0001;
-scene.add(sunlight);
-
-// const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
-// directionalLight.position.set(20, 15, 15);
-// directionalLight.castShadow = true;
-// directionalLight.shadow.mapSize.width = 2048;
-// directionalLight.shadow.mapSize.height = 2048;
-// directionalLight.shadow.camera.left = -10;
-// directionalLight.shadow.camera.right = 10;
-// directionalLight.shadow.camera.top = 10;
-// directionalLight.shadow.camera.bottom = -10;
-// directionalLight.shadow.camera.near = 1;
-// directionalLight.shadow.camera.far = 50;
-// scene.add(directionalLight);
 
 //orbit controls
 // const controls = new OrbitControls(camera, document.getElementById("canvas"));
@@ -348,24 +465,10 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 //renderer
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setClearColor(0x0000000, 1); // Set background color to black
-renderer.shadowMap.enabled = true; // Enable shadow maps
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-//post processing
-const composer = new EffectComposer(renderer);
-composer.addPass(new RenderPass(scene, camera));
-
-const bloomPass = new UnrealBloomPass(
-  new THREE.Vector2(window.innerWidth, window.innerHeight),
-  0.2, // strength
-  0.2, // radius
-  0 // threshold
-);
-composer.addPass(bloomPass);
 
 // resize
 window.addEventListener("resize", () => {
@@ -373,7 +476,6 @@ window.addEventListener("resize", () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
-  composer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   // controls.update();
 });
@@ -385,62 +487,44 @@ window.addEventListener("mousemove", (event) => {
 
   if (room) {
     gsap.to(room.rotation, {
-      x: y * 0.1,
-      y: x * 0.1,
+      x: y * 0.05,
+      y: x * 0.05,
       duration: 0.5,
       ease: "power2.out",
     });
   }
 });
 
-//camera positions
-let camPositions = [
-  {
-    id: "landingPage",
-    position: new THREE.Vector3(
-      -1.0703035128665155,
-      2.366754901952743,
-      5.916248299201015
-    ),
-    rotation: new THREE.Euler(0, 0, Math.PI / 2),
-  },
-  {
-    id: "about",
-    position: new THREE.Vector3(
-      -1.0703035128665155,
-      2.366754901952743,
-      5.916248299201015
-    ),
-    rotation: new THREE.Euler(0, 0, Math.PI / 2),
-  },
-  {
-    id: "projects",
-    position: new THREE.Vector3(
-      -1.0703035128665155,
-      2.366754901952743,
-      5.916248299201015
-    ),
-    rotation: new THREE.Euler(0, 0, Math.PI / 2),
-  },
-  {
-    id: "contact",
-    position: new THREE.Vector3(
-      -1.0703035128665155,
-      2.366754901952743,
-      5.916248299201015
-    ),
-    rotation: new THREE.Euler(0, 0, Math.PI / 2),
-  },
-];
+// raycaster
+window.addEventListener("mousemove", (e) => {
+  pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
+  pointer.y = -(e.clientY / window.innerHeight) * 2 + 1;
+});
 
 //Animation loop
 function animate() {
-  requestAnimationFrame(animate);
   // controls.update();
+
+  // Raycaster
+  raycaster.setFromCamera(pointer, camera);
+
+  // calculate objects intersecting the picking ray
+  const intersects = raycaster.intersectObjects(raycasterObjects);
+
+  for (let i = 0; i < intersects.length; i++) {
+    
+  }
+  if (intersects.length > 0) {
+    document.body.style.cursor = "pointer";
+  } else {
+    document.body.style.cursor = "default";
+  }
 
   const delta = clock.getDelta();
   if (mixer) mixer.update(delta);
-  composer.render();
+
+  renderer.render(scene, camera);
+  requestAnimationFrame(animate);
 }
 
 animate();
