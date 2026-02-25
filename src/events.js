@@ -14,29 +14,37 @@ window.addEventListener("resize", () => {
     // controls.update();
 });
 
-// ── Parallax effect ──────────────────────────────────────────────
-window.addEventListener("mousemove", (event) => {
-    const x = (event.clientX / window.innerWidth) * 2 - 1;
-    const y = -(event.clientY / window.innerHeight) * 2 + 1;
+if (!isMobile) {
+    // ── Parallax effect ──────────────────────────────────────────────
+    // Skipped on mobile: touch screens don't fire mousemove,
+    // and the GSAP tween would run pointlessly every pointer event.
+    window.addEventListener("mousemove", (event) => {
+        const x = (event.clientX / window.innerWidth) * 2 - 1;
+        const y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-    if (window.room) {
-        gsap.to(window.room.rotation, {
-            x: y * 0.05,
-            y: x * 0.05,
-            duration: 0.5,
-            ease: "power2.out",
-        });
-    }
-});
+        if (window.room) {
+            gsap.to(window.room.rotation, {
+                x: y * 0.05,
+                y: x * 0.05,
+                duration: 0.5,
+                ease: "power2.out",
+            });
+        }
+    });
 
-// ── Raycaster pointer tracking ───────────────────────────────────
-window.addEventListener("mousemove", (e) => {
-    pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
-    pointer.y = -(e.clientY / window.innerHeight) * 2 + 1;
-});
+    // ── Raycaster pointer tracking ───────────────────────────────────
+    // Skipped on mobile: cursor changes are meaningless on touch.
+    window.addEventListener("mousemove", (e) => {
+        pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
+        pointer.y = -(e.clientY / window.innerHeight) * 2 + 1;
+    });
+}
 
 // ── Raycaster cursor update (called each frame) ──────────────────
 export function updateRaycaster() {
+    // No-op on mobile — saves a raycaster intersect check every single frame
+    if (isMobile) return;
+
     raycaster.setFromCamera(pointer, camera);
 
     // calculate objects intersecting the picking ray
@@ -51,3 +59,4 @@ export function updateRaycaster() {
         document.body.style.cursor = "default";
     }
 }
+

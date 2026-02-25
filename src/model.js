@@ -43,22 +43,35 @@ const textureMap = {
 
 const loadedTextures = {
     day: {},
-    night: {},
+    night: {}, // populated lazily on first toggle
 };
 
 const textureLoader = new THREE.TextureLoader();
 
+// Load only day textures upfront — night textures load on first toggle
 Object.entries(textureMap).forEach(([key, paths]) => {
     const dayTexture = textureLoader.load(paths.day);
     dayTexture.colorSpace = THREE.SRGBColorSpace;
     dayTexture.flipY = false;
     loadedTextures.day[key] = dayTexture;
-
-    const nightTexture = textureLoader.load(paths.night);
-    nightTexture.colorSpace = THREE.SRGBColorSpace;
-    nightTexture.flipY = false;
-    loadedTextures.night[key] = nightTexture;
 });
+
+// Called once on first toggle to fetch and inject night textures
+function loadNightTextures() {
+    return new Promise((resolve) => {
+        let loaded = 0;
+        const total = Object.keys(textureMap).length;
+        Object.entries(textureMap).forEach(([key, paths]) => {
+            const nightTexture = textureLoader.load(paths.night, () => {
+                loaded++;
+                if (loaded === total) resolve();
+            });
+            nightTexture.colorSpace = THREE.SRGBColorSpace;
+            nightTexture.flipY = false;
+            loadedTextures.night[key] = nightTexture;
+        });
+    });
+}
 
 // ── GLTF Model ───────────────────────────────────────────────────
 const loader = new GLTFLoader();
@@ -155,12 +168,29 @@ loader.load("/portfolioWithoutMaterialsV14.glb", function (gltf) {
     scene.add(room);
     window.room = room;
     let isNightMode = true;
+    let nightTexturesLoaded = false;
     const toggleButton = document.getElementById("modeToggle");
     const switchimg = document.getElementById("switch");
 
     if (toggleButton) {
-        toggleButton.addEventListener("click", () => {
+        toggleButton.addEventListener("click", async () => {
             isNightMode = !isNightMode;
+
+            // Lazy-load night textures on very first toggle
+            if (!nightTexturesLoaded && !isNightMode) {
+                console.log("Lazy-loading night textures...");
+                await loadNightTextures();
+                // Inject the now-loaded night textures into existing materials
+                updatableMaterials.forEach((material) => {
+                    const key = Object.keys(textureMap).find((k) =>
+                        material.uniforms.uDayTexture.value === loadedTextures.day[k]
+                    );
+                    if (key) material.uniforms.uNightTexture.value = loadedTextures.night[key];
+                });
+                nightTexturesLoaded = true;
+                console.log("Night textures loaded and injected.");
+            }
+
             console.log(`Switching to ${isNightMode ? "Night" : "Day"} mode. Updating ${updatableMaterials.length} materials.`);
 
             updatableMaterials.forEach((material) => {
@@ -175,15 +205,15 @@ loader.load("/portfolioWithoutMaterialsV14.glb", function (gltf) {
                 rotate: isNightMode ? 0 : 90,
                 duration: 1.5,
                 ease: "power1.inOut"
-            })
+            });
         });
 
         room.traverse((node) => {
             if (node.name === "window") {
                 node.material = new THREE.MeshBasicMaterial({
                     map: videoTexture
-                })
+                });
             }
-        })
+        });
     }
 });
