@@ -1,4 +1,4 @@
-html body{
+html body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -8,11 +8,11 @@ html body{
 }
 
 html::-webkit-scrollbar,
-    body::-webkit-scrollbar {
-        display: none;
-    }
+body::-webkit-scrollbar {
+    display: none;
+}
 
-#canvas{
+#canvas {
     position: fixed;
     top: 0;
     left: 0;
@@ -32,7 +32,7 @@ html::-webkit-scrollbar,
     align-items: center;
 }
 
-.terminal{
+.terminal {
     max-width: 90%;
     white-space: pre-wrap;
     font-size: 1rem;
@@ -50,24 +50,23 @@ html::-webkit-scrollbar,
     }
 }
 
-main{
+main {
     position: relative;
     z-index: 1;
 }
 
-.section{
+.section {
     margin-top: 0;
     height: 100vh;
-    width: 100vw;
     position: relative;
     color: black;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(1px);
     z-index: 1;
     opacity: 0;
 }
 
-.section p{
+.section p {
     margin-top: 0;
     margin-bottom: 0;
     display: flex;
@@ -76,27 +75,27 @@ main{
     text-align: center;
 }
 
-h1{
+h1 {
     font-size: 1.5rem;
     padding: 2rem;
     text-align: center;
     font-family: 'Press Start 2P', system-ui;
 }
 
-#home{
+#home {
     display: flex;
     position: relative;
     color: white;
     border-radius: 10px;
     width: 100vw;
     height: 100vh;
-    
+
 }
 
-#welcome{
+#welcome {
     display: flex;
     backdrop-filter: blur(5px);
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
     z-index: 1;
@@ -104,7 +103,7 @@ h1{
     height: 100vh;
 }
 
-#home pre{
+#home pre {
     padding: 10px;
     border-radius: 20px;
     text-align: center;
@@ -114,7 +113,7 @@ h1{
     font-size: 1.5rem;
 }
 
-#modeToggle{
+#modeToggle {
     position: fixed;
     background: transparent;
     margin: 15px;
@@ -127,11 +126,11 @@ h1{
     justify-content: center;
     opacity: 1 !important;
     z-index: 9999;
-    overflow:visible;
+    overflow: visible;
     cursor: pointer;
 }
 
-#switch{
+#switch {
     margin: -20px;
     width: 60px;
     height: auto;
@@ -139,53 +138,45 @@ h1{
     transition: width 0.2s ease-in-out;
 }
 
-#switch:hover{
+#switch:hover {
     width: 90px;
 }
 
 
 
-#about{
-    margin: 30px;
-    height: 100vh;
-    width: 40vw;
-    border-radius: 5%;
-    margin-left: 58vw;
-}
-
-
-#projects{
-    margin: 20px;
-    width: 50vw;
+#about {
+    margin: 1rem;
+    height: 90vh;
     border-radius: 25px;
 }
 
-#skills{
-    margin: 20px;
-    width: 45vw;
-    border-radius: 25px;
-    margin-left: 54vw;
-}
 
-#achievements{
+#projects {
     margin: 20px;
-    width: 40vw;
     border-radius: 25px;
 }
 
-#vibes{
+#skills {
     margin: 20px;
-    width: 47vw;
     border-radius: 25px;
 }
 
-#experiences{
+#achievements {
     margin: 20px;
-    width: 45vw;
     border-radius: 25px;
-    margin-left: 54vw;
 }
-#contact{
+
+#vibes {
+    margin: 20px;
+    border-radius: 25px;
+}
+
+#experiences {
+    margin: 20px;
+    border-radius: 25px;
+}
+
+#contact {
     margin: 20px;
     width: 45vw;
     border-radius: 25px;
