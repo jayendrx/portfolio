@@ -10,7 +10,7 @@ export const mixerRef = { value: null };
 
 // ── Video textures ───────────────────────────────────────────────
 const video = document.createElement("video");
-video.src = "/day.mp4";
+video.src = "/night.mp4";
 video.flipX = true;
 video.loop = true;
 video.muted = true; // Mute the video to allow autoplay
@@ -22,20 +22,6 @@ const videoTexture = new THREE.VideoTexture(video);
 videoTexture.rotation = Math.PI / 2; // Rotate the video texture to match the model's orientation
 videoTexture.center.set(0.5, 0.5); // Center the texture
 videoTexture.colorSpace = THREE.SRGBColorSpace; // Ensure the video texture uses the correct color space
-
-const video2 = document.createElement("video");
-video2.src = "/night.mp4";
-video2.flipX = true;
-video2.loop = true;
-video2.muted = true; // Mute the video to allow autoplay
-video2.playsInline = true; // For iOS compatibility
-video2.autoplay = true; // Autoplay the video
-video2.play();
-
-const videoTexture2 = new THREE.VideoTexture(video2);
-videoTexture2.rotation = Math.PI / 2; // Rotate the video texture to match the model's orientation
-videoTexture2.center.set(0.5, 0.5); // Center the texture
-videoTexture2.colorSpace = THREE.SRGBColorSpace; // Ensure the video texture uses the correct color space
 
 // ── Atlas textures ───────────────────────────────────────────────
 const textureMap = {
@@ -195,7 +181,7 @@ loader.load("/portfolioWithoutMaterialsV14.glb", function (gltf) {
         room.traverse((node) => {
             if (node.name === "window") {
                 node.material = new THREE.MeshBasicMaterial({
-                    map: isNightMode ? videoTexture2 : videoTexture
+                    map: videoTexture
                 })
             }
         })
