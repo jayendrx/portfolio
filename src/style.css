@@ -204,12 +204,6 @@ h1 {
 /* ── Mobile overrides ────────────────────────────────────────────── */
 @media (max-width: 768px) {
 
-    html,
-    body {
-        /* Prevent rubber-band white-flash bounce on mobile without breaking scroll */
-        overscroll-behavior: none;
-    }
-
     .section {
         margin: 10px;
         border-radius: 15px;
