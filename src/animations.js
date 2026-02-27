@@ -13,8 +13,7 @@ window.onbeforeunload = function () {
 // ── Loading screen ──────────────────────────────────────────────
 const bootLines = [
     "JayOS 98 [Version 1.0.0]",
-    "(c) 2004-2025 Jay.",
-    " Your friendly neighbourhood developer.",
+    "(c) 2004-2025 Jay. Your friendly neighbourhood developer.",
     " ",
     "Initializing creativity modules...",
     "Loading 3D portfolio interface...",
@@ -26,7 +25,7 @@ const bootLines = [
 
 const homeLines = [
     "Welcome to my portfolio!",
-    "Explore my projects, skills, and experiences.",
+    "Explore my projects and skills",
     "Scroll down to continue.",
     "Hello! I am Jayendra",
 ];

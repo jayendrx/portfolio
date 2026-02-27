@@ -71,7 +71,7 @@ main {
     min-height: 100dvh;
     height: auto;
     position: relative;
-    color: black;
+    color: rgba(197, 197, 0, 0.97);
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(1px);
     z-index: 1;
@@ -91,7 +91,7 @@ main {
 }
 
 h1 {
-    font-size: clamp(0.85rem, 3vw, 1.5rem);
+    font-size: clamp(0.85rem, 3vw, 2.5rem);
     padding: 2rem;
     text-align: center;
     font-family: 'Press Start 2P', system-ui;
@@ -142,12 +142,30 @@ h1 {
     height: 70px;
     display: flex;
     align-items: center;
-    border: none;
     justify-content: center;
     opacity: 1 !important;
     z-index: 9999;
     overflow: visible;
     cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+#modeToggle {
+    border: none;
+    outline: none;
+}
+
+#modeToggle:focus {
+    outline: none;
+}
+
+#modeToggle:active {
+    outline: none;
+}
+
+#modeToggle:focus-visible {
+    outline: none;
 }
 
 #switch {
@@ -158,10 +176,6 @@ h1 {
     transition: width 0.2s ease-in-out;
 }
 
-#switch:hover {
-    width: 90px;
-}
-
 
 #about {
     margin: 1rem;
@@ -170,19 +184,548 @@ h1 {
     border-radius: 25px;
 }
 
+/* ── About section layout ─────────────────────────────────────── */
+
+.about-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 3rem;
+    padding: 0 3rem 3.5rem;
+    box-sizing: border-box;
+}
+
+/* ── Photo column (left) ──────────────────────────────────────── */
+.about-photo-wrap {
+    flex: 0 0 480px;
+    position: sticky;
+    top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.about-photo {
+    width: 100%;
+    max-width: 480px;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    filter: grayscale(15%) contrast(1.05);
+    transition: filter 0.45s ease, border-color 0.45s ease;
+}
+
+.about-photo:hover {
+    filter: grayscale(0%) contrast(1.08);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* ── Text column (right) ──────────────────────────────────────── */
+.about-text {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.about-bio {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    line-height: 1.95;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.about-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(0.5rem, 1.1vw, 0.78rem);
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.06em;
+    margin-bottom: -0.5rem;
+}
+
+.about-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.about-list li {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+    line-height: 1.85;
+    color: rgba(255, 255, 255, 0.85);
+    padding: 0.75rem 1.1rem;
+    border-left: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 0 8px 8px 0;
+}
+
+.about-cta {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 1.2rem;
+    font-style: italic;
+}
+
+.hl {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* ── Mobile: single column, photo on top ─────────────────────── */
+@media (max-width: 768px) {
+    .about-inner {
+        flex-direction: column-reverse;
+        /* Puts the 2nd HTML item (photo) on top */
+        align-items: center;
+        padding: 0 1.4rem 2.5rem;
+        gap: 2rem;
+    }
+
+    .about-photo-wrap {
+        position: static;
+        flex: none;
+        width: 70%;
+        max-width: 260px;
+    }
+
+    .about-photo {
+        max-width: 100%;
+    }
+
+    .about-bio {
+        font-size: clamp(0.9rem, 3.8vw, 1.05rem);
+    }
+
+    .about-list li {
+        font-size: clamp(0.88rem, 3.5vw, 1rem);
+    }
+
+    .about-label {
+        font-size: clamp(0.48rem, 2vw, 0.65rem);
+    }
+}
+
+
+/* ── Projects section layout ────────────────────────────────────── */
 #projects {
-    margin: 20px;
+    margin: 1rem;
+    min-height: 90dvh;
+    height: auto;
     border-radius: 25px;
+    padding-bottom: 4rem;
 }
 
+/* ── Projects Horizontal Scroller ─────────────────────────────── */
+.projects-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 2rem;
+    padding: 2rem 3rem 3rem 3rem;
+    margin: 0 auto;
+
+    /* Smooth native scrolling features */
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    /* Hide scrollbar for a cleaner look while keeping functionality */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.projects-grid::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+}
+
+/* ── Project Card ─────────────────────────────────────────────── */
+.project-card {
+    /* Fixed width so cards don't shrink when there are 5 of them */
+    flex: 0 0 clamp(300px, 80vw, 420px);
+    scroll-snap-align: center;
+
+    background: rgba(15, 15, 15, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+/* ── Media Area (Image/GIF/Video) ─────────────────────────────── */
+.project-media {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #111;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-media img,
+.project-media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-media img {
+    transform: scale(1.05);
+}
+
+/* ── Content Area ─────────────────────────────────────────────── */
+.project-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.project-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+    color: #ffffff;
+    margin: 0 0 1rem 0;
+    line-height: 1.4;
+}
+
+#projects p.project-desc {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(220, 220, 220, 0.85);
+    margin: 0 0 1.5rem 0;
+    padding: 0;
+    display: block;
+    /* Override global .section p */
+    text-align: left;
+    flex: 1;
+    /* Pushes tags/links to bottom */
+}
+
+/* ── Tags ─────────────────────────────────────────────────────── */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tag {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #000;
+    background: #fff;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    letter-spacing: 0.02em;
+}
+
+/* ── Links / Buttons ──────────────────────────────────────────── */
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+    /* Always sits at bottom of card */
+}
+
+.btn-github {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-github:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+}
+
+/* ── Mobile Overrides ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .projects-grid {
+        padding: 1.5rem 1.2rem;
+        gap: 1.2rem;
+
+        /* Ensures snapping works perfectly on mobile where cards touch the edge */
+        scroll-padding-left: 1.2rem;
+    }
+
+    .project-card {
+        flex: 0 0 clamp(280px, 85vw, 320px);
+    }
+
+    .project-content {
+        padding: 1.2rem;
+    }
+}
+
+/* ── Skills section layout ──────────────────────────────────────── */
 #skills {
-    margin: 20px;
+    margin: 1rem;
+    min-height: 90dvh;
+    height: auto;
     border-radius: 25px;
+    padding-bottom: 4rem;
 }
 
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+    padding: 0 3rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.skill-category {
+    background: linear-gradient(145deg, rgba(25, 25, 25, 0.8) 0%, rgba(10, 10, 10, 0.9) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 2.2rem;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Subtle glowing top edge accent */
+.skill-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(255, 255, 255, 0) 100%);
+    opacity: 0.5;
+    transition: opacity 0.4s ease;
+}
+
+.skill-category:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.6),
+        0 0 25px rgba(255, 255, 255, 0.03);
+    z-index: 10;
+}
+
+.skill-category:hover::before {
+    opacity: 1;
+}
+
+.skill-category h2 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+    color: #ffffff;
+    margin: 0 0 1.8rem 0;
+    line-height: 1.6;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.9;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+}
+
+.skill-tags .tag {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    /* Fully rounded pills */
+    letter-spacing: 0.03em;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.skill-tags .tag:hover {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000000;
+    border-color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
+}
+
+/* ── Mobile Skills Overrides ──────────────────────────────────── */
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1.2rem 2rem;
+        gap: 1.5rem;
+    }
+
+    .skill-category {
+        padding: 1.5rem;
+    }
+}
+
+/* ── Achievements section layout ────────────────────────────────── */
 #achievements {
-    margin: 20px;
+    margin: 1rem;
+    min-height: 90dvh;
+    height: auto;
     border-radius: 25px;
+    padding-bottom: 4rem;
+}
+
+.timeline {
+    position: relative;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 3rem 4rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: calc(3rem + 108px);
+    top: 0.5rem;
+    bottom: 2rem;
+    width: 1px;
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.18) 8%,
+        rgba(255,255,255,0.18) 92%,
+        rgba(255,255,255,0) 100%
+    );
+}
+
+.timeline-item {
+    display: grid;
+    grid-template-columns: 108px 36px 1fr;
+    align-items: start;
+    margin-bottom: 3.5rem;
+    position: relative;
+}
+
+.timeline-item:last-child { margin-bottom: 0; }
+
+.tl-meta { padding-top: 0.2rem; text-align: right; padding-right: 1.4rem; }
+
+.tl-year {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.58rem;
+    color: rgba(255, 255, 255, 0.35);
+    line-height: 1.6;
+    letter-spacing: 0.04em;
+}
+
+.tl-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    margin-top: 0.3rem;
+    justify-self: center;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-item:hover .tl-dot { background: #fff; box-shadow: 0 0 10px rgba(255,255,255,0.6); }
+
+.timeline-item.is-hero .tl-dot {
+    width: 13px; height: 13px;
+    background: rgba(255,255,255,0.65);
+    border-color: #fff;
+    margin-top: 0.2rem;
+}
+
+.timeline-item.is-hero:hover .tl-dot { background: #fff; box-shadow: 0 0 14px rgba(255,255,255,0.8); }
+
+.tl-body {
+    padding-left: 1.8rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.timeline-item:last-child .tl-body { border-bottom: none; padding-bottom: 0; }
+
+.tl-title {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.82);
+    margin: 0 0 0.45rem 0;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+    transition: color 0.3s ease;
+}
+
+.timeline-item.is-hero .tl-title { color: #fff; font-size: clamp(1.05rem, 1.9vw, 1.35rem); }
+.timeline-item:hover .tl-title { color: #fff; }
+
+.tl-role {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 0.9rem;
+}
+
+#achievements p.tl-desc {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.93rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0; padding: 0;
+    display: block; text-align: left;
+}
+
+#achievements p.tl-desc strong { color: #fff; font-weight: 600; }
+
+@media (max-width: 768px) {
+    .timeline { padding: 0 1.4rem 3rem; }
+    .timeline::before { left: calc(1.4rem + 72px); }
+    .timeline-item { grid-template-columns: 72px 28px 1fr; margin-bottom: 2.5rem; }
+    .tl-year { font-size: 0.5rem; }
+    .tl-body { padding-left: 1.2rem; padding-bottom: 2rem; }
+    .tl-title { font-size: 1rem; }
 }
 
 #vibes {
@@ -240,4 +783,97 @@ h1 {
         width: 45vw;
         margin-left: 50vw;
     }
+}
+/* -- Contact Section -- */
+#contact {
+    margin: 1rem;
+    min-height: 80dvh;
+    height: auto;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.contact-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    padding: 0 2rem 4rem;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.contact-tagline {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    color: rgba(255, 255, 255, 0.55);
+    margin: 0 0 3.5rem 0;
+    font-style: italic;
+    text-align: center;
+    padding: 0;
+    display: block;
+}
+.contact-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+}
+.contact-btn {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.4rem 1.8rem;
+    background: rgba(12, 12, 12, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    text-decoration: none;
+    color: #fff;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.contact-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%);
+    transition: left 0.5s ease;
+}
+.contact-btn:hover::before { left: 150%; }
+.contact-btn:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+.contact-btn-icon { flex-shrink: 0; display: flex; opacity: 0.7; transition: opacity 0.3s ease; }
+.contact-btn:hover .contact-btn-icon { opacity: 1; }
+.contact-btn-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(0.6rem, 1.1vw, 0.78rem);
+    color: #fff;
+    line-height: 1;
+    flex: 1;
+}
+.contact-btn-sub {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+    white-space: nowrap;
+}
+.contact-btn-resume { border-color: rgba(255, 255, 255, 0.22); }
+.contact-btn-resume:hover {
+    border-color: rgba(255, 255, 255, 0.55);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.07);
+}
+@media (max-width: 600px) {
+    .contact-links { grid-template-columns: 1fr; gap: 1rem; }
+    .contact-btn { padding: 1.2rem 1.4rem; }
+    .contact-btn-label { font-size: 0.6rem; }
 }
