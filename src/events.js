@@ -78,7 +78,7 @@ export function updateRaycaster() {
                 hit.userData._baseRotation = hit.rotation.clone();
             }
             gsap.to(hit.scale, {
-                x: hit.userData._baseScale.x * 1.12,
+                x: hit.userData._baseScale.x * 1.05,
                 y: hit.userData._baseScale.y * 1.12,
                 z: hit.userData._baseScale.z * 1.12,
                 duration: 0.35,

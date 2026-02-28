@@ -166,7 +166,7 @@ const positionAndRotation = [
     {
         id: "contact",
         iPosi: { x: -3, y: 2.5, z: 3 },
-        fPosi: { x: -1.2, y: 2.1, z: 2 },
+        fPosi: { x: -1.2, y: 2.3, z: 2.7 },
         iRot: { x: 0, y: 0, z: 0 },
         fRot: { x: -0.01871, y: -0.097683, z: 0 },
     },
