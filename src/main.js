@@ -6,6 +6,7 @@ import { scene, camera, renderer, clock } from "./scene.js";
 import { mixerRef } from "./model.js";
 import { updateRaycaster } from "./events.js";
 import { typeLine } from "./animations.js";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 // ── Boot ─────────────────────────────────────────────────────────
