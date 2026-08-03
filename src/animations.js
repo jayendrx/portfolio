@@ -40,7 +40,7 @@ const loadingScreen = document.getElementById("loadingScreen");
 function typelinehome() {
     if (currentLineHome < homeLines.length) {
         gsap.to(homeText, {
-            duration: 2,
+            duration: 1,
             text: homeLines[currentLineHome],
             ease: "power1.inOut",
             onComplete: () => {
@@ -73,7 +73,7 @@ export function typeLine() {
 
         // Animate this line's text with GSAP TextPlugin
         gsap.to(lineEl, {
-            duration: 1,
+            duration: 0.2,
             text: bootLines[currentLineBoot],
             ease: "none",
             onComplete: () => {

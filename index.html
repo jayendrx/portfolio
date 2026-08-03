@@ -1,187 +1,302 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <link rel="stylesheet" href="src/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jay</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-  <link rel="stylesheet" href="src/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500&display=swap"
-    rel="stylesheet" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jay</title>
-</head>
-
-<body>
-  <div id="loadingScreen">
-    <div class="terminal">
-      <pre id="bootText">
+  <body>
+    <div id="loadingScreen">
+      <div class="terminal">
+        <pre id="bootText">
           <span class="blinkingcursor"></span>
         </pre>
-    </div>
-  </div>
-
-  <main>
-    <div id="home">
-      <div id="welcome">
-        <pre id="homeText">
-        </pre>
-      </div>
-
-      <button id="modeToggle">
-        <img src="assets/switch.png" alt="modeToggle" id="switch">
-      </button>
-
-    </div>
-    <div class="section" id="about">
-      <h1>about</h1>
-      <div class="about-inner">
-
-        <div class="about-text">
-          <div class="about-bio">
-            I am a <span class="hl">Robotics-focused Computer Science</span> student at
-            <span class="hl">Manipal University Jaipur</span>, specializing in
-            <span class="hl">IoT &amp; Intelligent Systems</span>. My work is driven by a
-            passion for <span class="hl">Physical AI</span> and embodied robotics — the
-            challenge of building perception-driven systems that can navigate and interact
-            with the real world.
-          </div>
-
-          <div class="about-label">currently deep-diving into</div>
-          <ul class="about-list">
-            <li>
-              <span class="hl">Autonomous Navigation</span> — Developing control systems
-              for UAVs using <span class="hl">ROS2</span>, Gazebo, and Non-linear MPC
-              algorithms for precise flight path automation.
-            </li>
-            <li>
-              <span class="hl">Robotic Perception</span> — Implementing real-time
-              <span class="hl">SLAM</span> and LiDAR-based mapping on TurtleBot3 hardware.
-            </li>
-            <li>
-              <span class="hl">Interactive 3D Environments</span> — Bridging web
-              development and robotics by building non-GPS 3D navigation systems using
-              <span class="hl">Three.js</span> and Blender.
-            </li>
-          </ul>
-
-          <div class="about-bio">
-            Beyond technical implementation, I value international collaboration and
-            sustainability. I was selected for <span class="hl">IGCSP 2025</span>, an
-            Indo-German challenge where I coordinated system modeling for circular economy
-            PV modules. Whether optimizing a pathfinding algorithm or leading technical
-            initiatives as <span class="hl">Technical Secretary of ANOVA</span>, I thrive
-            at the intersection of complex software architecture and physical hardware.
-          </div>
-
-          <div class="about-bio about-cta">
-            I am always looking to connect with teams building the next generation of
-            <span class="hl">intelligent, autonomous machines</span>.
-          </div>
-        </div>
-
-        <div class="about-photo-wrap">
-          <img src="/photos/jay.jpg" alt="Jay" class="about-photo" />
-        </div>
-
       </div>
     </div>
-    <div class="section" id="projects">
-      <h1>Projects</h1>
 
-      <div class="projects-grid">
-        <!-- Project 1 -->
-        <div class="project-card">
-          <div class="project-media">
-            <video src="/photos/projectVid01.mp4" autoplay muted loop playsinline></video>
-          </div>
-          <div class="project-content">
-            <h2 class="project-title">Autonomous UAV Navigator</h2>
-            <p class="project-desc">
-              A comprehensive control system for UAVs using ROS2 and Gazebo. Implements Non-linear MPC algorithms to
-              achieve precise flight path automation in simulated environments.
-            </p>
-            <div class="project-tags">
-              <span class="tag">ROS2</span>
-              <span class="tag">Gazebo</span>
-              <span class="tag">C++</span>
-              <span class="tag">Python</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/jayendrx" target="_blank" class="btn-github">
-                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path
-                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                  </path>
-                </svg>
-                View Code
-              </a>
-            </div>
-          </div>
+    <main>
+      <div id="home">
+        <div id="welcome">
+          <pre id="homeText"></pre>
         </div>
 
-        <!-- Project 2 -->
-        <div class="project-card">
-          <div class="project-media">
-            <video src="/photos/projectVid02.mp4" autoplay muted loop playsinline></video>
-          </div>
-          <div class="project-content">
-            <h2 class="project-title">LiDAR SLAM Mapper</h2>
-            <p class="project-desc">
-              Real-time SLAM implementation using LiDAR data to generate accurate 2D/3D maps of indoor environments.
-              Built and deployed directly on TurtleBot3 hardware.
-            </p>
-            <div class="project-tags">
-              <span class="tag">SLAM</span>
-              <span class="tag">TurtleBot3</span>
-              <span class="tag">Robotics</span>
+        <button id="modeToggle">
+          <img src="assets/switch.png" alt="modeToggle" id="switch" />
+        </button>
+      </div>
+      <div class="section" id="about">
+        <h1>about</h1>
+        <div class="about-inner">
+          <div class="about-text">
+            <div class="about-bio">
+              I am a
+              <span class="hl">Robotics-focused Computer Science</span> student
+              at <span class="hl">Manipal University Jaipur</span>, specializing
+              in <span class="hl">IoT &amp; Intelligent Systems</span>. My work
+              is driven by a passion for <span class="hl">Physical AI</span> and
+              embodied robotics — the challenge of building perception-driven
+              systems that can navigate and interact with the real world.
             </div>
-            <div class="project-links">
-              <a href="https://github.com/jayendrx" target="_blank" class="btn-github">
-                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path
-                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                  </path>
-                </svg>
-                View Code
-              </a>
-            </div>
-          </div>
-        </div>
 
-        <!-- Project 3 -->
-        <div class="project-card">
-          <div class="project-media">
-            <video src="/photos/projectVid03.mp4" autoplay muted loop playsinline></video>
+            <div class="about-label">currently deep-diving into</div>
+            <ul class="about-list">
+              <li>
+                <span class="hl">Autonomous Navigation</span> — Developing
+                control systems for UAVs using <span class="hl">ROS2</span>,
+                Gazebo, and Non-linear MPC algorithms for precise flight path
+                automation.
+              </li>
+              <li>
+                <span class="hl">Robotic Perception</span> — Implementing
+                real-time <span class="hl">SLAM</span> and LiDAR-based mapping
+                on TurtleBot3 hardware.
+              </li>
+              <li>
+                <span class="hl">Interactive 3D Environments</span> — Bridging
+                web development and robotics by building non-GPS 3D navigation
+                systems using <span class="hl">Three.js</span> and Blender.
+              </li>
+            </ul>
+
+            <div class="about-bio">
+              Beyond technical implementation, I value international
+              collaboration and sustainability. I was selected for
+              <span class="hl">IGCSP 2025</span>, an Indo-German challenge where
+              I coordinated system modeling for circular economy PV modules.
+              Whether optimizing a pathfinding algorithm or leading technical
+              initiatives as
+              <span class="hl">Technical Secretary of ANOVA</span>, I thrive at
+              the intersection of complex software architecture and physical
+              hardware.
+            </div>
+
+            <div class="about-bio about-cta">
+              I am always looking to connect with teams building the next
+              generation of
+              <span class="hl">intelligent, autonomous machines</span>.
+            </div>
           </div>
-          <div class="project-content">
-            <h2 class="project-title">3D Web Navigation</h2>
-            <p class="project-desc">
-              A browser-based non-GPS local navigation system. Connects Three.js visuals with backend pathfinding to
-              create an interactive, embodied robotic camera experience.
-            </p>
-            <div class="project-tags">
-              <span class="tag">Three.js</span>
-              <span class="tag">WebGL</span>
-              <span class="tag">Pathfinding</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/jayendrx" target="_blank" class="btn-github">
-                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path
-                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                  </path>
-                </svg>
-                View Code
-              </a>
-            </div>
+
+          <div class="about-photo-wrap">
+            <img src="/photos/jay.jpg" alt="Jay" class="about-photo" />
           </div>
         </div>
-        <!-- Project 4 (commented out)
+      </div>
+      <div class="section" id="projects">
+        <h1>Projects</h1>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-card">
+            <div class="project-media">
+              <video
+                src="/photos/projectVid01.mp4"
+                autoplay
+                muted
+                loop
+                playsinline
+              ></video>
+            </div>
+            <div class="project-content">
+              <h2 class="project-title">Autonomous UAV Navigator</h2>
+              <p class="project-desc">
+                A comprehensive control system for UAVs using ROS2 and Gazebo.
+                Implements Non-linear MPC algorithms to achieve precise flight
+                path automation in simulated environments.
+              </p>
+              <div class="project-tags">
+                <span class="tag">ROS2</span>
+                <span class="tag">Gazebo</span>
+                <span class="tag">C++</span>
+                <span class="tag">Python</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/jayendrx"
+                  target="_blank"
+                  class="btn-github"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                    ></path>
+                  </svg>
+                  View Code
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card">
+            <div class="project-media">
+              <video
+                src="/photos/quadrupedVid.mp4"
+                autoplay
+                muted
+                loop
+                playsinline
+              ></video>
+            </div>
+            <div class="project-content">
+              <h2 class="project-title">Quadruped Robot Platform</h2>
+              <p class="project-desc">
+                An 8-DOF quadruped robot built from scratch using ESP32 and PWM
+                servo control, featuring custom gait generation and modular
+                locomotion. Currently being upgraded to a lightweight 12-DOF
+                chassis with Raspberry Pi-powered high-level autonomy,
+                perception, and ROS2 integration.
+              </p>
+              <div class="project-tags">
+                <span class="tag">ESP32</span>
+                <span class="tag">C++</span>
+                <span class="tag">PCA9685</span>
+                <span class="tag">ROS2</span>
+                <span class="tag">Raspberry Pi</span>
+                <span class="tag">Embedded Systems</span>
+              </div>
+              <!-- <div class="project-links">
+                <a
+                  href="https://github.com/jayendrx"
+                  target="_blank"
+                  class="btn-github"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                    ></path>
+                  </svg>
+                  View Code
+                </a>
+              </div> -->
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card">
+            <div class="project-media">
+              <video
+                src="/photos/projectVid02.mp4"
+                autoplay
+                muted
+                loop
+                playsinline
+              ></video>
+            </div>
+            <div class="project-content">
+              <h2 class="project-title">LiDAR SLAM Mapper</h2>
+              <p class="project-desc">
+                Real-time SLAM implementation using LiDAR data to generate
+                accurate 2D/3D maps of indoor environments. Built and deployed
+                directly on TurtleBot3 hardware.
+              </p>
+              <div class="project-tags">
+                <span class="tag">SLAM</span>
+                <span class="tag">TurtleBot3</span>
+                <span class="tag">Robotics</span>
+              </div>
+              <!-- <div class="project-links">
+                <a
+                  href="https://github.com/jayendrx"
+                  target="_blank"
+                  class="btn-github"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                    ></path>
+                  </svg>
+                  View Code
+                </a>
+              </div> -->
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="project-card">
+            <div class="project-media">
+              <video
+                src="/photos/projectVid03.mp4"
+                autoplay
+                muted
+                loop
+                playsinline
+              ></video>
+            </div>
+            <div class="project-content">
+              <h2 class="project-title">3D Web Navigation</h2>
+              <p class="project-desc">
+                A browser-based non-GPS local navigation system. Connects
+                Three.js visuals with backend pathfinding to create an
+                interactive, embodied robotic camera experience.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Three.js</span>
+                <span class="tag">WebGL</span>
+                <span class="tag">Pathfinding</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/jayendrx"
+                  target="_blank"
+                  class="btn-github"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                    ></path>
+                  </svg>
+                  View Code
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Project 5 (commented out)
         <div class="project-card">
           <div class="project-media">
             <img src="https://placehold.co/600x400/222/555?text=Project+Media" alt="Project 4" />
@@ -236,434 +351,557 @@
             </div>
           </div>
         </div>
-        -->
+        --></div>
       </div>
-    </div>
-    <div class="section" id="skills">
-      <h1>Skills</h1>
-      <div class="skills-grid">
+      <div class="section" id="skills">
+        <h1>Skills</h1>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h2>Languages</h2>
+            <div class="skill-tags">
+              <span class="tag">C/C++</span>
+              <span class="tag">Python</span>
+              <span class="tag">C#</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">SQL</span>
+            </div>
+          </div>
 
-        <div class="skill-category">
-          <h2>Languages</h2>
-          <div class="skill-tags">
-            <span class="tag">C/C++</span>
-            <span class="tag">Python</span>
-            <span class="tag">C#</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">SQL</span>
+          <div class="skill-category">
+            <h2>Data Science &amp; ML</h2>
+            <div class="skill-tags">
+              <span class="tag">Machine Learning</span>
+              <span class="tag">Scikit-learn</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">NumPy</span>
+              <span class="tag">Data Structures &amp; Algorithms</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h2>Robotics &amp; Simulation</h2>
+            <div class="skill-tags">
+              <span class="tag">ROS2</span>
+              <span class="tag">TurtleBot3</span>
+              <span class="tag">Gazebo</span>
+              <span class="tag">MoveIt2</span>
+              <span class="tag">SLAM</span>
+              <span class="tag">TF2</span>
+              <span class="tag">URDF/Xacro</span>
+              <span class="tag">MPC</span>
+              <span class="tag">OpenCV</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h2>Web Development</h2>
+            <div class="skill-tags">
+              <span class="tag">HTML &amp; CSS</span>
+              <span class="tag">Three.js</span>
+              <span class="tag">GSAP</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Express.js</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h2>Game Dev &amp; 3D</h2>
+            <div class="skill-tags">
+              <span class="tag">Unity</span>
+              <span class="tag">Unreal Engine</span>
+              <span class="tag">Blender</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h2>Tools, OS &amp; Databases</h2>
+            <div class="skill-tags">
+              <span class="tag">Linux (Ubuntu)</span>
+              <span class="tag">Git</span>
+              <span class="tag">CMake</span>
+              <span class="tag">Colcon</span>
+              <span class="tag">MongoDB</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Supabase</span>
+            </div>
           </div>
         </div>
-
-        <div class="skill-category">
-          <h2>Data Science &amp; ML</h2>
-          <div class="skill-tags">
-            <span class="tag">Machine Learning</span>
-            <span class="tag">Scikit-learn</span>
-            <span class="tag">Pandas</span>
-            <span class="tag">NumPy</span>
-            <span class="tag">Data Structures &amp; Algorithms</span>
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <h2>Robotics &amp; Simulation</h2>
-          <div class="skill-tags">
-            <span class="tag">ROS2</span>
-            <span class="tag">TurtleBot3</span>
-            <span class="tag">Gazebo</span>
-            <span class="tag">MoveIt2</span>
-            <span class="tag">SLAM</span>
-            <span class="tag">TF2</span>
-            <span class="tag">URDF/Xacro</span>
-            <span class="tag">MPC</span>
-            <span class="tag">OpenCV</span>
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <h2>Web Development</h2>
-          <div class="skill-tags">
-            <span class="tag">HTML &amp; CSS</span>
-            <span class="tag">Three.js</span>
-            <span class="tag">GSAP</span>
-            <span class="tag">Node.js</span>
-            <span class="tag">Express.js</span>
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <h2>Game Dev &amp; 3D</h2>
-          <div class="skill-tags">
-            <span class="tag">Unity</span>
-            <span class="tag">Unreal Engine</span>
-            <span class="tag">Blender</span>
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <h2>Tools, OS &amp; Databases</h2>
-          <div class="skill-tags">
-            <span class="tag">Linux (Ubuntu)</span>
-            <span class="tag">Git</span>
-            <span class="tag">CMake</span>
-            <span class="tag">Colcon</span>
-            <span class="tag">MongoDB</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">Supabase</span>
-          </div>
-        </div>
-
       </div>
-    </div>
-    <div class="section" id="achievements">
-      <h1>Achievements</h1>
-      <div class="timeline">
-
-        <div class="timeline-item is-hero">
-          <div class="tl-meta">
-            <span class="tl-year">2025</span>
+      <div class="section" id="achievements">
+        <h1>Achievements</h1>
+        <div class="timeline">
+          <div class="timeline-item is-hero">
+            <div class="tl-meta">
+              <span class="tl-year">2025</span>
+            </div>
+            <div class="tl-dot"></div>
+            <div class="tl-body">
+              <h2 class="tl-title">
+                IGCSP — Indo-German Challenge for Sustainable Production
+              </h2>
+              <div class="tl-role">
+                Core Global Coordinator &amp; System Modeler
+              </div>
+              <p class="tl-desc">
+                Spearheaded an elite cross-border technical collaboration
+                between top Indian and German institutions, coordinating
+                comprehensive system modeling, rigorous literature reviews, and
+                high-level data collection for circular economy PV modules.
+                Delivered a critically-acclaimed progress presentation on
+                advanced system modeling before an international panel of
+                experts.
+              </p>
+            </div>
           </div>
-          <div class="tl-dot"></div>
-          <div class="tl-body">
-            <h2 class="tl-title">IGCSP — Indo-German Challenge for Sustainable Production</h2>
-            <div class="tl-role">Core Global Coordinator &amp; System Modeler</div>
-            <p class="tl-desc">
-              Spearheaded an elite cross-border technical collaboration between top Indian and German institutions,
-              coordinating comprehensive system modeling, rigorous literature reviews, and high-level data collection
-              for circular economy PV modules. Delivered a critically-acclaimed progress presentation on advanced system
-              modeling before an international panel of experts.
+
+          <div class="timeline-item is-hero">
+            <div class="tl-meta">
+              <span class="tl-year">2023–24</span>
+            </div>
+            <div class="tl-dot"></div>
+            <div class="tl-body">
+              <h2 class="tl-title">
+                Dean's List — Three Consecutive Semesters
+              </h2>
+              <div class="tl-role">
+                Top Academic Performer · Manipal University Jaipur
+              </div>
+              <p class="tl-desc">
+                Maintained an extraordinary academic trajectory, consistently
+                ranking at the pinnacle of the cohort. Recognized on the
+                prestigious Dean's List for three back-to-back semesters with
+                near-perfect GPAs of
+                <strong>9.7</strong>, <strong>9.6</strong>, and
+                <strong>9.3</strong> — a testament to relentless technical rigor
+                and intellectual discipline.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-meta">
+              <span class="tl-year">2018 &amp; 2022</span>
+            </div>
+            <div class="tl-dot"></div>
+            <div class="tl-body">
+              <h2 class="tl-title">
+                International English Olympiad — Gold &amp; Silver Medalist
+              </h2>
+              <div class="tl-role">Science Olympiad Foundation (SOF)</div>
+              <p class="tl-desc">
+                Secured Gold and Silver medals across two editions of the
+                International English Olympiad, outperforming thousands of
+                competitors globally in language proficiency and analytical
+                reasoning.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-meta">
+              <span class="tl-year">Delegate</span>
+            </div>
+            <div class="tl-dot"></div>
+            <div class="tl-body">
+              <h2 class="tl-title">
+                Asia Youth International Model United Nations (AYIMUN)
+              </h2>
+              <div class="tl-role">Global Diplomatic Representative</div>
+              <p class="tl-desc">
+                Selected as an official delegate to navigate complex global
+                geopolitical and socio-economic challenges in a highly
+                competitive international diplomatic forum.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section" id="experiences">
+        <h1>Experience</h1>
+
+        <div class="exp-tagline">
+          building in the open — roles, events & leadership
+        </div>
+
+        <div class="exp-grid">
+          <!-- ANOVA -->
+          <div class="exp-card">
+            <div class="exp-card-header">
+              <div class="exp-role-block">
+                <div class="exp-role">Technical Secretary</div>
+                <div class="exp-org">
+                  ANOVA — Official Technical Club, Manipal University Jaipur
+                </div>
+              </div>
+              <div class="exp-period">
+                <span class="exp-period-badge">2023 – present</span>
+              </div>
+            </div>
+            <ul class="exp-bullets">
+              <li>
+                Oversee the technical operations and project initiatives of the
+                university's flagship tech club.
+              </li>
+              <li>
+                Coordinate workshops, hackathons, and speaker sessions for a
+                community of 200+ members.
+              </li>
+              <li>
+                Bridge cross-disciplinary teams to deliver robotics, web, and
+                AI-focused club projects.
+              </li>
+            </ul>
+            <div class="exp-tags">
+              <span>Leadership</span><span>Event Management</span
+              ><span>Robotics</span>
+            </div>
+          </div>
+
+          <!-- Blood Donation Camp -->
+          <div class="exp-card">
+            <div class="exp-card-header">
+              <div class="exp-role-block">
+                <div class="exp-role">Technical Executive</div>
+                <div class="exp-org">
+                  Mega Blood Donation Camp — Manipal University Jaipur
+                </div>
+              </div>
+              <div class="exp-period">
+                <span class="exp-period-badge">2024</span>
+              </div>
+            </div>
+            <ul class="exp-bullets">
+              <li>
+                Managed the end-to-end technical infrastructure of a large-scale
+                campus blood donation drive.
+              </li>
+              <li>
+                Coordinated digital registration systems and real-time donor
+                tracking workflows.
+              </li>
+              <li>
+                Collaborated with volunteer teams to ensure smooth logistics on
+                event day.
+              </li>
+            </ul>
+            <div class="exp-tags">
+              <span>Operations</span><span>Tech Coordination</span
+              ><span>Volunteering</span>
+            </div>
+          </div>
+
+          <!-- Startup Weekend -->
+          <div class="exp-card">
+            <div class="exp-card-header">
+              <div class="exp-role-block">
+                <div class="exp-role">Technical Executive</div>
+                <div class="exp-org">
+                  Startup Weekend Jaipur — Google for Startups
+                </div>
+              </div>
+              <div class="exp-period">
+                <span class="exp-period-badge">2024</span>
+              </div>
+            </div>
+            <ul class="exp-bullets">
+              <li>
+                Contributed to the technical organisation of a Google for
+                Startups–backed 54-hour startup sprint.
+              </li>
+              <li>
+                Supported AV and tech setup, participant coordination, and
+                live-demo stage management.
+              </li>
+              <li>
+                Engaged with founders, mentors, and investors across a diverse
+                startup ecosystem.
+              </li>
+            </ul>
+            <div class="exp-tags">
+              <span>Google for Startups</span><span>Startups</span
+              ><span>Tech Ops</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="vibes">
+        <h1>My Vibes</h1>
+
+        <!-- Post-it note -->
+        <div class="vibes-postit-row">
+          <div class="postit" style="--rot: -2.5deg">
+            <div class="postit-inner">
+              <div class="postit-title">current mood ★</div>
+              <p>
+                building cool stuff by day, losing sleep over ideas at night. if
+                it lights me up — i'm all in.
+              </p>
+              <div class="postit-tag">#engineerlife</div>
+            </div>
+          </div>
+          <div class="postit" style="--rot: 1.8deg">
+            <div class="postit-inner postit-pink">
+              <div class="postit-title">things i love ♥</div>
+              <p>
+                robotics · late-night coding chill music · good coffee building
+                things that move
+              </p>
+              <div class="postit-tag">#myworld</div>
+            </div>
+          </div>
+          <div class="postit" style="--rot: -0.8deg">
+            <div class="postit-inner postit-green">
+              <div class="postit-title">currently ↯</div>
+              <p>ROS2 + Gazebo LiDAR SLAM Three.js worlds</p>
+              <div class="postit-tag">#deepdive</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Polaroid wall ─────────────────────────────── -->
+        <div class="vibes-polaroid-label">📸 captured moments</div>
+        <div class="polaroid-grid">
+          <div class="polaroid" style="--rot: -3.2deg; --lift: 1">
+            <div class="polaroid-frame">
+              <img
+                class="pol-img has-photo"
+                src="photos/img1.jpeg"
+                alt="summer '24"
+              />
+            </div>
+            <div class="pol-tape pol-tape-tl"></div>
+            <div class="pol-tape pol-tape-tr"></div>
+            <div class="polaroid-caption">summer '12 ☀️</div>
+          </div>
+
+          <div class="polaroid" style="--rot: 2.4deg; --lift: 0">
+            <div class="polaroid-frame">
+              <img
+                class="pol-img has-photo"
+                src="photos/img2.jpeg"
+                alt="good times"
+              />
+            </div>
+            <div class="pol-tape pol-tape-tl"></div>
+            <div class="pol-tape pol-tape-tr"></div>
+            <div class="polaroid-caption">first 5k 🏃</div>
+          </div>
+
+          <div class="polaroid" style="--rot: -1.6deg; --lift: 1">
+            <div class="polaroid-frame">
+              <img
+                class="pol-img has-photo"
+                src="photos/img3.jpeg"
+                alt="late nights"
+              />
+            </div>
+            <div class="pol-tape pol-tape-tl"></div>
+            <div class="pol-tape pol-tape-tr"></div>
+            <div class="polaroid-caption">road trip 🚗</div>
+          </div>
+
+          <div class="polaroid" style="--rot: 3.8deg; --lift: 0">
+            <div class="polaroid-frame">
+              <img
+                class="pol-img has-photo"
+                src="photos/img4.jpeg"
+                alt="road trip"
+              />
+            </div>
+            <div class="pol-tape pol-tape-tl"></div>
+            <div class="pol-tape pol-tape-tr"></div>
+            <div class="polaroid-caption">dreams ✨</div>
+          </div>
+        </div>
+      </div>
+      <div class="section" id="contact">
+        <!-- CRT screen frame -->
+        <div class="crt-shell">
+          <!-- Screen scanlines overlay -->
+          <div class="crt-scanlines" aria-hidden="true"></div>
+
+          <!-- Top chrome bar -->
+          <div class="crt-topbar">
+            <div class="crt-dots">
+              <span class="crt-dot crt-red"></span>
+              <span class="crt-dot crt-yellow"></span>
+              <span class="crt-dot crt-green"></span>
+            </div>
+            <div class="crt-title">JAY_OS.exe — contact.bat</div>
+          </div>
+
+          <!-- Terminal body -->
+          <div class="crt-body">
+            <div class="crt-prompt-block">
+              <span class="crt-prompt">C:\JAYENDRA\&gt;</span>
+              <span class="crt-cmd"> whoami</span>
+            </div>
+            <p class="crt-output">
+              Jayendra Yadav — CS undergrad, robotics builder,<br />open to
+              collabs, internships &amp; cool conversations.
             </p>
+
+            <div class="crt-prompt-block" style="margin-top: 1rem">
+              <span class="crt-prompt">C:\JAYENDRA\&gt;</span>
+              <span class="crt-cmd"> connect --all</span>
+            </div>
+
+            <!-- Social links as terminal rows -->
+            <div class="crt-links">
+              <a
+                class="crt-link"
+                href="https://linkedin.com/in/jayendrakhairwal"
+                target="_blank"
+                rel="noopener"
+              >
+                <span class="crt-link-arrow">&gt;</span>
+                <span class="crt-link-icon">
+                  <!-- LinkedIn icon -->
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                    ></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                </span>
+                <span class="crt-link-label">linkedin</span>
+                <span class="crt-link-val">/jayendrakhairwal</span>
+              </a>
+
+              <a
+                class="crt-link"
+                href="https://github.com/jayendrx"
+                target="_blank"
+                rel="noopener"
+              >
+                <span class="crt-link-arrow">&gt;</span>
+                <span class="crt-link-icon">
+                  <!-- GitHub icon -->
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                    ></path>
+                  </svg>
+                </span>
+                <span class="crt-link-label">github</span>
+                <span class="crt-link-val">/jayendrx</span>
+              </a>
+
+              <a
+                class="crt-link"
+                href="https://instagram.com/jayendrx"
+                target="_blank"
+                rel="noopener"
+              >
+                <span class="crt-link-arrow">&gt;</span>
+                <span class="crt-link-icon">
+                  <!-- Instagram icon -->
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect
+                      x="2"
+                      y="2"
+                      width="20"
+                      height="20"
+                      rx="5"
+                      ry="5"
+                    ></rect>
+                    <path
+                      d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                    ></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                </span>
+                <span class="crt-link-label">instagram</span>
+                <span class="crt-link-val">@jayendrx</span>
+              </a>
+
+              <a
+                class="crt-link crt-link-resume"
+                href="https://drive.google.com/drive/folders/1ztmp4ZqdLUzd5WrEvNkAYY-UZ8Mw-aA-?usp=sharing"
+                target="_blank"
+                rel="noopener"
+              >
+                <span class="crt-link-arrow">&gt;</span>
+                <span class="crt-link-icon">
+                  <!-- File icon -->
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                    ></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </span>
+                <span class="crt-link-label">resume</span>
+                <span class="crt-link-val">view on drive ↗</span>
+              </a>
+            </div>
+
+            <!-- Blinking cursor line -->
+            <div class="crt-cursor-line">
+              <span class="crt-prompt">C:\JAYENDRA\&gt;</span>
+              <span class="crt-blink">█</span>
+            </div>
+          </div>
+          <!-- /crt-body -->
+
+          <!-- Bottom chrome -->
+          <div class="crt-bottombar">
+            <span class="crt-status">● ONLINE</span>
+            <span class="crt-copy"
+              >JAY © 2025 · built with ☕ &amp; three.js</span
+            >
           </div>
         </div>
-
-        <div class="timeline-item is-hero">
-          <div class="tl-meta">
-            <span class="tl-year">2023–24</span>
-          </div>
-          <div class="tl-dot"></div>
-          <div class="tl-body">
-            <h2 class="tl-title">Dean's List — Three Consecutive Semesters</h2>
-            <div class="tl-role">Top Academic Performer · Manipal University Jaipur</div>
-            <p class="tl-desc">
-              Maintained an extraordinary academic trajectory, consistently ranking at the pinnacle of the cohort.
-              Recognized on the prestigious Dean's List for three back-to-back semesters with near-perfect GPAs of
-              <strong>9.7</strong>, <strong>9.6</strong>, and <strong>9.3</strong> — a testament to relentless technical
-              rigor and intellectual discipline.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="tl-meta">
-            <span class="tl-year">2018 &amp; 2022</span>
-          </div>
-          <div class="tl-dot"></div>
-          <div class="tl-body">
-            <h2 class="tl-title">International English Olympiad — Gold &amp; Silver Medalist</h2>
-            <div class="tl-role">Science Olympiad Foundation (SOF)</div>
-            <p class="tl-desc">
-              Secured Gold and Silver medals across two editions of the International English Olympiad, outperforming
-              thousands of competitors globally in language proficiency and analytical reasoning.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="tl-meta">
-            <span class="tl-year">Delegate</span>
-          </div>
-          <div class="tl-dot"></div>
-          <div class="tl-body">
-            <h2 class="tl-title">Asia Youth International Model United Nations (AYIMUN)</h2>
-            <div class="tl-role">Global Diplomatic Representative</div>
-            <p class="tl-desc">
-              Selected as an official delegate to navigate complex global geopolitical and socio-economic challenges in
-              a highly competitive international diplomatic forum.
-            </p>
-          </div>
-        </div>
-
+        <!-- /crt-shell -->
       </div>
-    </div>
-    <div class="section" id="experiences">
-      <h1>Experience</h1>
+    </main>
 
-      <div class="exp-tagline">building in the open — roles, events & leadership</div>
+    <canvas id="canvas"></canvas>
 
-      <div class="exp-grid">
-
-        <!-- ANOVA -->
-        <div class="exp-card">
-          <div class="exp-card-header">
-            <div class="exp-role-block">
-              <div class="exp-role">Technical Secretary</div>
-              <div class="exp-org">ANOVA — Official Technical Club, Manipal University Jaipur</div>
-            </div>
-            <div class="exp-period">
-              <span class="exp-period-badge">2023 – present</span>
-            </div>
-          </div>
-          <ul class="exp-bullets">
-            <li>Oversee the technical operations and project initiatives of the university's flagship tech club.</li>
-            <li>Coordinate workshops, hackathons, and speaker sessions for a community of 200+ members.</li>
-            <li>Bridge cross-disciplinary teams to deliver robotics, web, and AI-focused club projects.</li>
-          </ul>
-          <div class="exp-tags">
-            <span>Leadership</span><span>Event Management</span><span>Robotics</span>
-          </div>
-        </div>
-
-        <!-- Blood Donation Camp -->
-        <div class="exp-card">
-          <div class="exp-card-header">
-            <div class="exp-role-block">
-              <div class="exp-role">Technical Executive</div>
-              <div class="exp-org">Mega Blood Donation Camp — Manipal University Jaipur</div>
-            </div>
-            <div class="exp-period">
-              <span class="exp-period-badge">2024</span>
-            </div>
-          </div>
-          <ul class="exp-bullets">
-            <li>Managed the end-to-end technical infrastructure of a large-scale campus blood donation drive.</li>
-            <li>Coordinated digital registration systems and real-time donor tracking workflows.</li>
-            <li>Collaborated with volunteer teams to ensure smooth logistics on event day.</li>
-          </ul>
-          <div class="exp-tags">
-            <span>Operations</span><span>Tech Coordination</span><span>Volunteering</span>
-          </div>
-        </div>
-
-        <!-- Startup Weekend -->
-        <div class="exp-card">
-          <div class="exp-card-header">
-            <div class="exp-role-block">
-              <div class="exp-role">Technical Executive</div>
-              <div class="exp-org">Startup Weekend Jaipur — Google for Startups</div>
-            </div>
-            <div class="exp-period">
-              <span class="exp-period-badge">2024</span>
-            </div>
-          </div>
-          <ul class="exp-bullets">
-            <li>Contributed to the technical organisation of a Google for Startups–backed 54-hour startup sprint.</li>
-            <li>Supported AV and tech setup, participant coordination, and live-demo stage management.</li>
-            <li>Engaged with founders, mentors, and investors across a diverse startup ecosystem.</li>
-          </ul>
-          <div class="exp-tags">
-            <span>Google for Startups</span><span>Startups</span><span>Tech Ops</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="section" id="vibes">
-      <h1>My Vibes</h1>
-
-      <!-- Post-it note -->
-      <div class="vibes-postit-row">
-        <div class="postit" style="--rot: -2.5deg">
-          <div class="postit-inner">
-            <div class="postit-title">current mood ★</div>
-            <p>building cool stuff by day,
-              losing sleep over ideas at night.
-              if it lights me up — i'm all in.</p>
-            <div class="postit-tag">#engineerlife</div>
-          </div>
-        </div>
-        <div class="postit" style="--rot: 1.8deg">
-          <div class="postit-inner postit-pink">
-            <div class="postit-title">things i love ♥</div>
-            <p>robotics · late-night coding
-              chill music · good coffee
-              building things that move</p>
-            <div class="postit-tag">#myworld</div>
-          </div>
-        </div>
-        <div class="postit" style="--rot: -0.8deg">
-          <div class="postit-inner postit-green">
-            <div class="postit-title">currently ↯</div>
-            <p>ROS2 + Gazebo
-              LiDAR SLAM
-              Three.js worlds</p>
-            <div class="postit-tag">#deepdive</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── Polaroid wall ─────────────────────────────── -->
-      <div class="vibes-polaroid-label">📸 captured moments</div>
-      <div class="polaroid-grid">
-
-        <div class="polaroid" style="--rot:-3.2deg; --lift:1">
-          <div class="polaroid-frame">
-            <img class="pol-img has-photo" src="photos/img1.jpeg" alt="summer '24" />
-          </div>
-          <div class="pol-tape pol-tape-tl"></div>
-          <div class="pol-tape pol-tape-tr"></div>
-          <div class="polaroid-caption">summer '12 ☀️</div>
-        </div>
-
-        <div class="polaroid" style="--rot:2.4deg; --lift:0">
-          <div class="polaroid-frame">
-            <img class="pol-img has-photo" src="photos/img2.jpeg" alt="good times" />
-          </div>
-          <div class="pol-tape pol-tape-tl"></div>
-          <div class="pol-tape pol-tape-tr"></div>
-          <div class="polaroid-caption">first 5k 🏃</div>
-        </div>
-
-        <div class="polaroid" style="--rot:-1.6deg; --lift:1">
-          <div class="polaroid-frame">
-            <img class="pol-img has-photo" src="photos/img3.jpeg" alt="late nights" />
-          </div>
-          <div class="pol-tape pol-tape-tl"></div>
-          <div class="pol-tape pol-tape-tr"></div>
-          <div class="polaroid-caption">road trip 🚗</div>
-        </div>
-
-        <div class="polaroid" style="--rot:3.8deg; --lift:0">
-          <div class="polaroid-frame">
-            <img class="pol-img has-photo" src="photos/img4.jpeg" alt="road trip" />
-          </div>
-          <div class="pol-tape pol-tape-tl"></div>
-          <div class="pol-tape pol-tape-tr"></div>
-          <div class="polaroid-caption">dreams ✨</div>
-        </div>
-
-      </div>
-
-
-    </div>
-    <div class="section" id="contact">
-
-      <!-- CRT screen frame -->
-      <div class="crt-shell">
-
-        <!-- Screen scanlines overlay -->
-        <div class="crt-scanlines" aria-hidden="true"></div>
-
-        <!-- Top chrome bar -->
-        <div class="crt-topbar">
-          <div class="crt-dots">
-            <span class="crt-dot crt-red"></span>
-            <span class="crt-dot crt-yellow"></span>
-            <span class="crt-dot crt-green"></span>
-          </div>
-          <div class="crt-title">JAY_OS.exe — contact.bat</div>
-        </div>
-
-        <!-- Terminal body -->
-        <div class="crt-body">
-
-          <div class="crt-prompt-block">
-            <span class="crt-prompt">C:\JAYENDRA\&gt;</span>
-            <span class="crt-cmd"> whoami</span>
-          </div>
-          <p class="crt-output">Jayendra Khairwal — CS undergrad, robotics builder,<br>open to collabs, internships
-            &amp; cool conversations.</p>
-
-          <div class="crt-prompt-block" style="margin-top:1rem">
-            <span class="crt-prompt">C:\JAYENDRA\&gt;</span>
-            <span class="crt-cmd"> connect --all</span>
-          </div>
-
-          <!-- Social links as terminal rows -->
-          <div class="crt-links">
-
-            <a class="crt-link" href="https://linkedin.com/in/jayendrakhairwal" target="_blank" rel="noopener">
-              <span class="crt-link-arrow">&gt;</span>
-              <span class="crt-link-icon">
-                <!-- LinkedIn icon -->
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                  <rect x="2" y="9" width="4" height="12"></rect>
-                  <circle cx="4" cy="4" r="2"></circle>
-                </svg>
-              </span>
-              <span class="crt-link-label">linkedin</span>
-              <span class="crt-link-val">/jayendrakhairwal</span>
-            </a>
-
-            <a class="crt-link" href="https://github.com/jayendrx" target="_blank" rel="noopener">
-              <span class="crt-link-arrow">&gt;</span>
-              <span class="crt-link-icon">
-                <!-- GitHub icon -->
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path
-                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                  </path>
-                </svg>
-              </span>
-              <span class="crt-link-label">github</span>
-              <span class="crt-link-val">/jayendrx</span>
-            </a>
-
-            <a class="crt-link" href="https://instagram.com/jayendrx" target="_blank" rel="noopener">
-              <span class="crt-link-arrow">&gt;</span>
-              <span class="crt-link-icon">
-                <!-- Instagram icon -->
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                </svg>
-              </span>
-              <span class="crt-link-label">instagram</span>
-              <span class="crt-link-val">@jayendrx</span>
-            </a>
-
-            <a class="crt-link crt-link-resume"
-              href="https://drive.google.com/file/d/1tAZB1GamPBpcbA3hq3qPwmytAEjyBbI6/view?usp=sharing" target="_blank"
-              rel="noopener">
-              <span class="crt-link-arrow">&gt;</span>
-              <span class="crt-link-icon">
-                <!-- File icon -->
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                  <line x1="16" y1="13" x2="8" y2="13"></line>
-                  <line x1="16" y1="17" x2="8" y2="17"></line>
-                  <polyline points="10 9 9 9 8 9"></polyline>
-                </svg>
-              </span>
-              <span class="crt-link-label">resume</span>
-              <span class="crt-link-val">view on drive ↗</span>
-            </a>
-
-          </div>
-
-          <!-- Blinking cursor line -->
-          <div class="crt-cursor-line">
-            <span class="crt-prompt">C:\JAYENDRA\&gt;</span>
-            <span class="crt-blink">█</span>
-          </div>
-
-        </div><!-- /crt-body -->
-
-        <!-- Bottom chrome -->
-        <div class="crt-bottombar">
-          <span class="crt-status">● ONLINE</span>
-          <span class="crt-copy">JAY © 2025 · built with ☕ &amp; three.js</span>
-        </div>
-
-      </div><!-- /crt-shell -->
-
-    </div>
-
-  </main>
-
-  <canvas id="canvas"></canvas>
-
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script>
-  <script type="module" src="src/main.js"></script>
-</body>
-
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script>
+    <script type="module" src="src/main.js"></script>
+  </body>
 </html>
